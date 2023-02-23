@@ -1,0 +1,85 @@
+body {
+    background-color: #343434;
+    font-family: Arial, sans-serif;
+    color: white;
+   }
+   nav{
+    background-color: #191919;
+    color: gray;
+   }
+   a {
+    color: white;
+   }
+   /* center container div */
+   .container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   }
+   
+   /* style h1 tag */
+   h1 {
+    margin-bottom: 20px;
+    font-weight: bold;
+   }
+   
+   /* adjust form width and background color */
+   form {
+    width: 50%;
+    background-color: #292929;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    color: #d8bfbf;
+   }
+   
+   /* style form input fields */
+   .form-group {
+    margin-bottom: 20px;
+   }
+   
+   .form-control {
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+   }
+   
+   /* style form button */
+   button {
+    margin-top: 20px;
+   }
+   
+   /* style error message */
+   .alert {
+    margin-top: 20px;
+    width: 50%;
+   }
+   a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+  
+  th {
+    font-weight: bold;
+    background-color: #292929;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+    color: #292929;
+  }

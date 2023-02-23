@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+ <div class="container">
+  <h1>Create Interview</h1>
+  <form id="create-interview-form" action="/" method="post">
+    {% csrf_token %}
+   
+   <div class="form-group">
+    <label for="start_time">Start Time:</label>
+    <input type="datetime-local" class="form-control" id="start_time" name="start_time" required>
+   </div>
+   <div class="form-group">
+    <label for="end_time">End Time:</label>
+    <input type="datetime-local" class="form-control" id="end_time" name="end_time" required>
+   </div>
+
+   <div class="form-group">
+    <label for="participants">Participants:</label><br/>
+
+    <select class="form-control" id="participants" name="participants[]" multiple required>
+        {% for user in participants %}
+        <option value="{{ user.id }}">{{ user.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+    <div class="form-group">
+    {% if errors %}
+    Error: {{errors}}
+      {% endif %}
+   </div>
+
+   <button onclick="location.href='interviews_list'" type="submit" class="btn btn-success"> Create </button>
+   <!-- <button type="submit" class="btn btn-primary">Create</button> -->
+   <!-- <input type="button" onclick="location.href='interviews_list'" class="btn btn-secondary" value="Cancel"/> -->
+   <button onclick="location.href='interviews_list'" type="button" class="btn btn-primary"> Cancel</button>
+  </form>
+  <div id="error-message" class="alert alert-danger mt-3" role="alert" style="display: none;"></div>
+ </div>
+</body>
+<!-- <script type="text/javascript">
+//     $(document).ready(function() {
+//     $('.js-example-basic-multiple');
+// });
+
+    // $(document).on('submit', '#post-form', function(e){
+    //     e.preventDefault();
+    //     $.ajax({
+    //         type:'POST',
+    //         url:'',
+    //         data:{
+    //             participants:$('#participants[]').val(),
+    //             start_time:$('#start_time').val(),
+    //             end_time:$('#end_time').val(),
+    //             csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+
+    //         },
+    //         success:function(){
+
+    //         }
+    //     });
+    // });
+
+//     $(document).querySelector('#create-interview-form').addEventListener('submit', async (event) => {
+//     event.preventDefault();
+//     const form = event.target;
+//     const url = '/interviews';
+//     const formData = new FormData(form);
+//     const response = await fetch(url, {
+//         method: 'POST',
+//         body: formData
+//     });
+//     if (response.ok) {
+//         window.location.href = '/interviews';
+//     } else {
+//         const error = await response.json();
+//         displayErrorMessage(error.message);
+//     }
+//     });
+
+// // display error message
+//     function displayErrorMessage(message) {
+//         const errorMessage = document.querySelector('#error-message');
+//         errorMessage.textContent = message;
+//         errorMessage.style.display = 'block';
+//     }
+// </script> -->
+{% endblock %}

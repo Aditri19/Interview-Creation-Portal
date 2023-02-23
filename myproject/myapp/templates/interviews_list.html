@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Upcoming Interviews</h1>
+  {% if interviews %}
+    <table>
+      <thead>
+        <tr>
+          <th>Interview ID</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Participants</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for interview in interviews %}
+          <tr>
+            <td>{{ interview.id }}</td>
+            <td>{{ interview.start_time }}</td>
+            <td>{{ interview.end_time }}</td>
+            <td>
+              {% for participant in interview.participants.all %}
+                {{ participant.name }}{% if not forloop.last %}, {% endif %}
+              {% endfor %}
+            </td>
+            <td><a href ="{% url 'edit_interview' interview.id  %}" class='btn btn-primary' style="float: right;" >
+              Edit Interview: {{interview.id}}
+          </a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No upcoming interviews.</p>
+  {% endif %}
+{% endblock %}
